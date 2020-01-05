@@ -13,6 +13,15 @@ Time            Seconds  Activity
 16:06:51.888914 6.38962e Stop  Naive Algorithm
 16:06:51.888918          Start Reversed Double Dabble Algorithm
 16:27:51.688992 1259.800 Stop  Reversed Double Dabble Algorithm
+
+Run 3 (with cout after the outer loop)
+Time            Seconds  Activity
+13:37:34.920543          Start Naive Algorithm
+4551203576472990879
+13:37:40.748926 5.828360 Stop  Naive Algorithm
+13:37:40.748931          Start Reversed Double Dabble Algorithm
+4551203576472990879
+13:57:45.188768 1204.440 Stop  Reversed Double Dabble Algorithm
 */
 
 #include <iostream>
@@ -65,6 +74,8 @@ void atoi_algo1(const vector<string>& strings) {
       res = res*10 + strings[i][j] - '0';
     }
   }
+  const uint128_pod* pod = reinterpret_cast<const uint128_pod*>(&res);
+  cout<<pod->lo<<endl;
 }
 
 // Reversed Double Dabble Algorithm
@@ -101,6 +112,8 @@ void atoi_algo2(const vector<string>& strings) {
     }
     free(scratch);
   }
+  const uint128_pod* pod = reinterpret_cast<const uint128_pod*>(&res);
+  cout<<pod->lo<<endl;
 }
 
 int main() {
